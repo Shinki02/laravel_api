@@ -18,4 +18,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // Route::get('customer',[CustomerController::class,'index'])
-Route::resource('customer','CustomerController');
+  
+
+Route::prefix('v1')->group(function(){
+    Route::resource('customer','Api\v1\CustomerController')->only(['show','update','delete','store']);
+
+    Route::resource('customer','Api\v1\CustomerController')->only(['index']);
+});
+
+Route::prefix('v2')->group(function(){
+    // Route::resource('customer','Api\v1\CustomerController')->only(['show','update','delete','store']);
+
+    Route::resource('customer','Api\v2\CustomerController')->only(['show']);
+});
