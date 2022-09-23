@@ -1,5 +1,6 @@
 	@extends('layout')
 	@section('content')
+	@include('pages.banner')
 	<div class="about">
 		<div class="container">
 			<div class="about-main">

@@ -14,12 +14,12 @@
         <!-- Styles -->
         
         <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-        <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-        <link href="css/style.css" rel='stylesheet' type='text/css' />
-        <script src="js/jquery.min.js"></script>
+        <link href="{{asset('css/bootstrap.css')}}" rel='stylesheet' type='text/css' />
+        <link href="{{asset('css/style.css')}}" rel='stylesheet' type='text/css' />
+        <script src="{{asset('js/jquery.min.js')}}"></script>
         <!---- start-smoth-scrolling---->
-        <script type="text/javascript" src="js/move-top.js"></script>
-        <script type="text/javascript" src="js/easing.js"></script>
+        <script type="text/javascript" src="{{asset('js/move-top.js')}}"></script>
+        <script type="text/javascript" src="{{asset('js/easing.js')}}"></script>
         <script type="text/javascript">
                     jQuery(document).ready(function($) {
                         $(".scroll").click(function(event){		
@@ -35,7 +35,7 @@
 	<div class="header-top">
 		<div class="container">
 			<div class="head-main">
-				<a href="index.html"><img src="images/logo-1.png" alt="" /></a>
+				<a href="index.html"><img src="{{asset('images/logo-1.png')}}" alt="" /></a>
 			</div>
 		</div>
 	</div>
@@ -47,24 +47,20 @@
 			<div class="navigation">
 				 <span class="menu"></span> 
 					<ul class="navig">
-						<li><a href="{{url('/')}}"  class="active">Home</a></li>
-						<li><a href="about.html">About</a></li>
-						<li><a href="gallery.html">Gallery</a></li>
-						<li><a href="typo.html">Typo</a></li>
-						<li><a href="contact.html">Contact</a></li>
+						<li><a href="{{url('/')}}"  class="active">Trang chủ</a></li>
+						<li><a href="about.html">Về chúng tôi</a></li>
+						<li><a href="gallery.html">Tin tức</a></li>
 					</ul>
 			</div>
 			<div class="header-right">
 				<div class="search-bar">
-					<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+					<input type="text" value="" placeholder="Tìm kiếm">
 					<input type="submit" value="">
 				</div>
 				<ul>
 					<li><a href="#"><span class="fb"> </span></a></li>
-					<li><a href="#"><span class="twit"> </span></a></li>
-					<li><a href="#"><span class="pin"> </span></a></li>
-					<li><a href="#"><span class="rss"> </span></a></li>
-					<li><a href="#"><span class="drbl"> </span></a></li>
+					
+					
 				</ul>
 			</div>
 				<div class="clearfix"></div>
@@ -80,7 +76,7 @@
 			});
 		</script>
 	<!-- script-for-menu -->
-	@include('pages.banner')
+	
 	<!--main-starts-->
 	@yield('content')
     <!--main-end-->
@@ -92,42 +88,42 @@
 				<li>
 					<a href="#">
 						<div class="banner-1">
-							<img src="images/s-1.jpg" class="img-responsive" alt="">
+							<img src="{{asset('images/s-1.jpg')}}" class="img-responsive" alt="">
 						</div>
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="#">'
 						<div class="banner-1">
-							<img src="images/s-2.jpg" class="img-responsive" alt="">
+							<img src="{{asset('images/s-2.jpg')}}" class="img-responsive" alt="">
 						</div>
 					</a>
 				</li>			
 				<li>
 					<a href="#">
 						<div class="banner-1">
-							<img src="images/s-3.jpg" class="img-responsive" alt="">
+							<img src="{{asset('images/s-3.jpg')}}" class="img-responsive" alt="">
 						</div>
 					</a>
 				</li>		
 				<li>
 					<a href="#">
 						<div class="banner-1">
-							<img src="images/s-4.jpg" class="img-responsive" alt="">
+							<img src="{{asset('images/s-4.jpg')}}" class="img-responsive" alt="">
 						</div>
 					</a>
 				</li>	
 				<li>
 					<a href="#">
 						<div class="banner-1">
-							<img src="images/s-5.jpg" class="img-responsive" alt="">
+							<img src="{{asset('images/s-5.jpg')}}" class="img-responsive" alt="">
 						</div>
 					</a>
 				</li>	
 				<li>
 					<a href="#">
 						<div class="banner-1">
-							<img src="images/s-6.jpg" class="img-responsive" alt="">
+							<img src="{{asset('images/s-6.jpg')}}" class="img-responsive" alt="">
 						</div>
 					</a>
 				</li>				
@@ -161,7 +157,7 @@
 									
 								});
 								</script>
-								<script type="text/javascript" src="js/jquery.flexisel.js"></script>
+								<script type="text/javascript" src="{{asset('js/jquery.flexisel.js')}}"></script>
 					<div class="clearfix"> </div>
 			</div>
 		</div>
