@@ -13,9 +13,27 @@ use App\Http\Controller\CustomerController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Route::get('customer',[CustomerController::class,'index'])
-Route::resource('customer','CustomerController');
+Route::resource('/', 'HomeController@index');
+  
+
+Route::prefix('v1')->group(function(){
+    Route::resource('customer','Api\v1\CustomerController')->only(['show','update','delete','store']);
+
+    Route::resource('customer','Api\v1\CustomerController')->only(['index']);
+
+    Route::resource('category','Api\v1\CategoryPostController');
+
+    Route::resource('post','Api\v1\PostController');
+
+    Route::delete('category/delete/{id}','Api\v1\CategoryPostController@destroy');
+});
+
+Route::prefix('v2')->group(function(){
+    // Route::resource('customer','Api\v1\CustomerController')->only(['show','update','delete','store']);
+
+    Route::resource('customer','Api\v2\CustomerController')->only(['show']);
+});

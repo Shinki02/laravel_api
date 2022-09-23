@@ -1,13 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\v1;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
 use App\Customer;
+use App\Http\Resources\v1\CustomerResource;
+use App\Http\Resources\v1\CustomerCollection;
 
 class CustomerController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -15,7 +19,7 @@ class CustomerController extends Controller
     public function index()
     {
         //
-        return Customer::all();
+        return new CustomerCollection(Customer::paginate());
     }
 
     /**
@@ -34,9 +38,20 @@ class CustomerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Customer $customer, Request $request)
     {
-        //
+        $request->validate([
+            'name_customer' =>'required',
+            'email_customer' =>'required',
+            'phone_customer' =>'required',
+            'address_customer' =>'required',
+            'city_customer' =>'required'
+        ]);
+
+        $customer = Customer::create($request->all());
+
+        return new CustomerResource($customer);
+
     }
 
     /**
@@ -45,9 +60,9 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Customer $customer)
     {
-        //
+        return new CustomerResource($customer);
     }
 
     /**
@@ -68,9 +83,10 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Customer $customer)
     {
-        //
+        $customer->update($request->all());
+        return new CustomerResource($customer);
     }
 
     /**
@@ -79,8 +95,9 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Customer $customer)
     {
-        //
+        //xoa ng dung
+        $customer->delete();
     }
 }
