@@ -1,8 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\v1;
 
 use App\Post;
+use App\CategoryPost;
+use Storage;
+use File;
+
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -13,8 +17,10 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {   
+        $categories = CategoryPost::all();
+        $post = Post::all();
+        return view('layouts.post.index',compact('post','categories'));
     }
 
     /**
@@ -24,7 +30,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $category = CategoryPost::all();
+        return view('layouts.post.create')->with(compact('category'));
     }
 
     /**
@@ -35,7 +42,24 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
+        $post = new Post();
+        $post->title = $request->title;
+        $post->short_desc = $request->short_desc;
+        $post->desc = $request->desc;
+        $post->category_id = $request->category_id;
+              
+        if ($request['image']){
+            $image = $request['image'];
+            $ext = $image->getClientOriginalExtension();
+            $name = time().''.$image->getClientOriginalName();
+            Storage::disk('public')->put($name,File::get($image));
+            $post->image = $name;
+        }else{
+            $post->image = 'default.jpg';
+        }
+        $post->save();
+        return redirect()->back();
     }
 
     /**
