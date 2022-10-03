@@ -45,6 +45,7 @@ class PostController extends Controller
        
         $post = new Post();
         $post->title = $request->title;
+        $post->views = $request->views;
         $post->short_desc = $request->short_desc;
         $post->desc = $request->desc;
         $post->category_id = $request->category_id;
@@ -96,7 +97,8 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $post = Post::find($id);
-        $post->title = $request->get('title');  
+        $post->title = $request->get('title');
+        $post->views = $request->views;
         $post->short_desc = $request->get('short_desc');
         $post->desc = $request->get('desc');
         $post->category_id = $request->get('category_id');

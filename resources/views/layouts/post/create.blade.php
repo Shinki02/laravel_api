@@ -21,6 +21,8 @@
                         <div class="form-group">
                             <label for="title">Tiêu đề</label> 
                             <input type="text" placeholder="Tiêu đề..." class="form-control" name="title">
+                            <label for="title">Lượt views</label> 
+                            <input type="text" placeholder="Thêm lượt views..." class="form-control" name="views">
                             <label for="title">Hình ảnh</label> 
                             <input type="file" class="form-control" name="image">  
                             <label for="title">Mô tả ngắn</label> 

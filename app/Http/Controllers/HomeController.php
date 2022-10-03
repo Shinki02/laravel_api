@@ -11,13 +11,14 @@ class HomeController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
+     */ 
     public function index()
     {
         $all_post = Post::all();
+        $viewest_post = Post::orderBy('views','DESC')->limit(5)->get();
         $newest_post = Post::all()->random(5);
         $category = CategoryPost::all();
-        return view('pages.main',compact('category','all_post','newest_post')); 
+        return view('pages.main',compact('category','all_post','newest_post','viewest_post')); 
     }
 
     /**

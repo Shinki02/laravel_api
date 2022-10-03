@@ -21,6 +21,8 @@
                         <div class="form-group">
                             <label for="title">Tiêu đề</label> 
                             <input type="text" value="{{$post->title}}" class="form-control" name="title">
+                            <label for="title">Lượt views</label> 
+                            <input type="text" value="{{$post->views}}" class="form-control" name="views">
                             <label for="title">Hình ảnh</label> 
                             <input type="file" class="form-control" name="image">
                             <p><img width="200px" src="{{asset('uploads/'.$post->image)}}"></p>

@@ -30,6 +30,7 @@
                             <tr>
                             <th scope="col">#</th>
                             <th scope="col">Tiêu đề</th>
+                            <th scope="col">Lượt xem</th>
                             <th scope="col">Hình ảnh</th>
                             <th scope="col">Mô tả ngắn</th>
                             <th scope="col">Thuộc danh mục</th>
@@ -47,6 +48,7 @@
                             <tr>
                             <th scope="row">{{$i}}</th>
                             <th scope="row">{{$p->title}}</th>
+                            <th scope="row">{{$p->views}}</th>
                             <th scope="row"><img width="200px" src="{{asset('uploads/'.$p->image)}}"></th>
                             <th scope="row">{!!substr($p->short_desc,0,100)!!}</th>
                             <th scope="row">{{$p->categories}}</th>
