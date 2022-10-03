@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\CategoryPost;
+use App\post;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,7 +14,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('pages.main');
+        $all_post = Post::all();
+        $newest_post = Post::all()->random(5);
+        $category = CategoryPost::all();
+        return view('pages.main',compact('category','all_post','newest_post')); 
     }
 
     /**

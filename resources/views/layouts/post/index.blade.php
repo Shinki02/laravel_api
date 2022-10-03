@@ -9,7 +9,7 @@
     @endif
     @if (Session::has('failure'))
     <div class="alert alert-danger">
-    <p>{{ Session::get('success') }}</p>
+    <p>{{ Session::get('failure') }}</p>
     @endif
     </div>
     <div class="row justify-content-center">
@@ -47,17 +47,17 @@
                             <tr>
                             <th scope="row">{{$i}}</th>
                             <th scope="row">{{$p->title}}</th>
-                            <th scope="row"><img width="100px" src="{{asset('uploads/'.$p->image)}}"></th>
-                            <th scope="row">{!!$p->short_desc!!}</th>
-                            <th scope="row">{{$p->post_category_id}}</th>
+                            <th scope="row"><img width="200px" src="{{asset('uploads/'.$p->image)}}"></th>
+                            <th scope="row">{!!substr($p->short_desc,0,100)!!}</th>
+                            <th scope="row">{{$p->categories}}</th>
                             <td>
                                 <form action="{{route('post.destroy',[$p->id])}}"method="post">
                                     @method('DELETE')
                                     @csrf
                                     <input class="btn btn-danger mb-2" type="submit" value="Delete" />
                                 </form>
-                        
-                                <a class="btn btn-waring btn-sm" href="{{route('post.show',[$p->id])}}">Edit</a>
+                                
+                                <a class="btn btn-waring btn-sm"  href="{{route('post.show',[$p->id])}}">Edit</a>
                            
                             </tr>
                             @endforeach

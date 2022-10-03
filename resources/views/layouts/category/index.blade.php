@@ -45,18 +45,14 @@
                             <th scope="row">{{$i}}</th>
                             <td>{{$categories->title}}</td>
                             <td>
-                                <form action="{{url('api/v1/category/delete',['Id'=>$categories->id])}}" method="Post">
+                                <form action="{{url('api/v1/category/delete',['Id'=>$categories->id])}}" method="POST">
                                     @method('DELETE')
                                     @csrf
                                     <input class="btn btn-danger mb-2" type="submit" value="Delete" />
                                 </form>
                         
                                 <a class="btn btn-waring btn-sm" href="{{route('category.show',[$categories->id])}}">Edit</a>
-                             <!-- <form action="{{route('category.destroy',[$categories->id])}}" method="POST">
-                                    @method('PUT')
-                                    @csrf
-                                    <input class="btn btn-success mb-2" type="submit" value="Edit" />
-                                </form> -->
+
                             </tr>
                             @endforeach
 
