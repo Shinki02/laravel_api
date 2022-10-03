@@ -12,4 +12,8 @@ class Post extends Model
     ];
     protected $primaryKey = 'id';
     protected $table = 'posts';
+
+    public function categories(){
+        return $this->belongsTo('App\CategoryPost','category_id');
+    }
 }

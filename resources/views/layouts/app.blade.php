@@ -26,6 +26,14 @@
             CKEDITOR.replace('ckeditor_desc');
         });
     </script>
+    <style>
+        p{
+            display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+    </style>
 </head>
 <body>
     <div id="app">

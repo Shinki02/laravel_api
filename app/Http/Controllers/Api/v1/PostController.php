@@ -19,8 +19,8 @@ class PostController extends Controller
     public function index()
     {   
         $categories = CategoryPost::all();
-        $post = Post::all();
-        return view('layouts.post.index',compact('post','categories'));
+        $post = Post::with('categories')->get();
+        return view('layouts.post.index')->with(compact('post','categories'));
     }
 
     /**
@@ -59,7 +59,7 @@ class PostController extends Controller
             $post->image = 'default.jpg';
         }
         $post->save();
-        return redirect()->back();
+        return redirect()->route('post.index')->with('success','Post Insert Successfuly');
     }
 
     /**
@@ -68,9 +68,11 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($post)
     {
-        //
+        $post = Post::find($post);
+        $category = CategoryPost::all();
+        return view('layouts.post.show')->with(compact('category','post'));
     }
 
     /**
@@ -91,9 +93,25 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, $id)
     {
-        //
+        $post = Post::find($id);
+        $post->title = $request->get('title');  
+        $post->short_desc = $request->get('short_desc');
+        $post->desc = $request->get('desc');
+        $post->category_id = $request->get('category_id');
+              
+        if ($request['image']){
+            unlink('uploads/'.$post->image);
+            $image = $request['image'];
+            $ext = $image->getClientOriginalExtension();
+            $name = time().' '.$image->getClientOriginalName();
+            Storage::disk('public')->put($name,File::get($image));
+            $post->image = $name;
+        }
+        
+        $post->save();
+        return redirect()->route('post.index')->with('success','Post Updated Successfuly');  
     }
 
     /**
@@ -102,8 +120,12 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($post)
     {
-        //
+        $path = 'uploads/';
+        $post = Post::find($post);
+        unlink($path.$post->image);
+        $post->delete();
+        return redirect()->back();
     }
 }

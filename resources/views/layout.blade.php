@@ -48,8 +48,9 @@
 				 <span class="menu"></span> 
 					<ul class="navig">
 						<li><a href="{{url('/')}}"  class="active">Trang chủ</a></li>
-						<li><a href="about.html">Về chúng tôi</a></li>
-						<li><a href="gallery.html">Tin tức</a></li>
+						@foreach($category as $key => $cate)
+						<li><a href="{{route('danh-muc.show',['id'=>$cate->id,'slug'=>Str::slug($cate->title)])}}">{{$cate->title}}</a></li>
+						@endforeach
 					</ul>
 			</div>
 			<div class="header-right">
@@ -167,7 +168,7 @@
 	<div class="footer">
 		<div class="container">
 			<div class="footer-text">
-				<p>© 2015 Coffee Break. All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+				<p>© 2022 Coffee Break. All Rights Reserved | Design by  <a href="#" target="_blank">HÊ HÊ</a> </p>
 			</div>
 		</div>
 	</div>
