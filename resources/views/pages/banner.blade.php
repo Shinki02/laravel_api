@@ -1,6 +1,6 @@
 
 <!--banner-starts-->
-<div class="banner">
+<!-- <div class="banner">
 		<div class="container">
 			<div class="banner-top">
 				<div class="banner-text">
@@ -12,5 +12,5 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<!--banner-end-->

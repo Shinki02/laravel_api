@@ -17,3 +17,4 @@ Route::get('/bai-viet/{id}', 'BaivietController@show');
 
 Auth::routes();
 Route::get('/home', 'LoginController@index')->name('home');
+Route::get('/tim-kiem', 'HomeController@tim_kiem')->name('home');

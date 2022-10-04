@@ -12,6 +12,13 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */ 
+    public function tim_kiem(){
+        $keywords = $_GET['keywords'];
+        $category_post = Post::with('categories')->where('title','LIKE','%'.$keywords.'%')->orwhere('short_desc','LIKE','%'.$keywords.'%')->orwhere('desc','LIKE','%'.$keywords.'%')->get();
+        $category = CategoryPost::all();
+        
+        return view('pages.tim_kiem')->with(compact('category','category_post','keywords'));
+    }
     public function index()
     {
         $all_post = Post::all();

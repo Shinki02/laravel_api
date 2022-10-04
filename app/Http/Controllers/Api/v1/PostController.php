@@ -6,7 +6,7 @@ use App\Post;
 use App\CategoryPost;
 use Storage;
 use File;
-
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -44,6 +44,7 @@ class PostController extends Controller
     {
        
         $post = new Post();
+        $post->post_date = Carbon::now('Asia/Ho_Chi_Minh')->format('d-m-Y');
         $post->title = $request->title;
         $post->views = $request->views;
         $post->short_desc = $request->short_desc;
@@ -97,6 +98,7 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $post = Post::find($id);
+        $post->post_date = Carbon::now('Asia/Ho_Chi_Minh')->format('d-m-Y');
         $post->title = $request->get('title');
         $post->views = $request->views;
         $post->short_desc = $request->get('short_desc');

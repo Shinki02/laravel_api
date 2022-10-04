@@ -15,7 +15,7 @@
 						<h4 style="text-align: center;font-weight: bold;font-size: 30px;font-family: sans-serif">{{$post->title}}</h4>				
 							<ul class="blog-ic">
 								<li><a href="#"><span> <i  class="glyphicon glyphicon-user"> </i>Admin</span> </a> </li>
-		  						 <li><span><i class="glyphicon glyphicon-time"> </i>June 14, 2013</span></li>		  						 	
+		  						 <li><span><i class="glyphicon glyphicon-time"> </i>{{$post->post_date}}</span></li>		  						 	
 		  						 <li><span><i class="glyphicon glyphicon-eye-open"> </i>Views:{{$post->views}}</span></li>
 		  					</ul>		  						
 						    {!!$post->desc!!}

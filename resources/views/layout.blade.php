@@ -54,15 +54,18 @@
 					</ul>
 			</div>
 			<div class="header-right">
-				<div class="search-bar">
-					<input type="text" value="" placeholder="Tìm kiếm">
-					<input type="submit" value="">
-				</div>
+				<form action="{{url('tim-kiem')}}" method="GET">
+					@csrf
+					<div class="search-bar">
+						<input type="text" name="keywords" placeholder="Tìm kiếm">
+						<input type="submit" value="Tìm kiếm" name="timkiem">
+					</div>
+				</form>
+
 				<ul>
-					<li><a href="#"><span class="fb"> </span></a></li>
-					
-					
+					<li><a href="#"><span class="fb"> </span></a></li>	
 				</ul>
+
 			</div>
 				<div class="clearfix"></div>
 			</div>

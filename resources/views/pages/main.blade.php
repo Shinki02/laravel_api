@@ -10,15 +10,16 @@
                             @foreach($all_post as $key => $post)
                             
                             <div class="row" style="margin:5px">
+							<a href="{{route('danh-muc.show',['id'=>$post->categories->id,'slug'=>Str::slug($post->categories->title)])}}"><h6>{{$post->categories->title}}</h6></a>
                             <a href="{{route('bai-viet.show',['id'=>$post->id])}}">
                                 <div class="col-md-6 abt-left">
                                     <img width="100%" src="{{asset('uploads/'.$post->image)}}" alt="{{Str::slug($post->title)}}" />
                                 </div>
                                 <div class="col-md-6 abt-left">    
-                                    <h6>{{$post->categories->title}}</h6>
+                                    
                                     <h3>{{$post->title}}</h3>
                                     <p>{!!$post->short_desc!!}</p>''
-                                    <label>May 29, 2015</label>
+                                    <label>{{$post->post_date}}</label>
                                 </div>
                                 
 							           <a href="{{route('bai-viet.show',['id'=>$post->id])}}">Đọc tiếp...</a>
@@ -35,8 +36,10 @@
 					<div class="abt-2">
 						<h3>Mới cập nhật</h3>
 						@foreach($newest_post as $key => $new)
-						<a href="{{route('bai-viet.show',['id'=>$new->id])}}">
+						
 							<div class="might-grid">
+							<a href="{{route('danh-muc.show',['id'=>$new->categories->id,'slug'=>Str::slug($new->categories->title)])}}"><h6>{{$new->categories->title}}</h6></a>
+							<a href="{{route('bai-viet.show',['id'=>$new->id])}}">
 								<div class="grid-might">
 									<img src="{{asset('uploads/'.$new->image)}}" class="img-responsive" alt="">
 								</div>
@@ -46,8 +49,9 @@
 									<a href="{{route('bai-viet.show',['id'=>$new->id])}}">Đọc tiếp...</a>
 								</div>
 								<div class="clearfix"></div>
+								</a>
 							</div>	
-							</a>
+							
 						@endforeach			    			
 					</div>
 					<div class="abt-2">
