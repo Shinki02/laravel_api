@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\CategoryPost;
 use App\post;
-
+use DB;
 class BaivietController extends Controller
 {
     /**
@@ -49,8 +49,13 @@ class BaivietController extends Controller
     public function show($id)
     {
         $post = Post::with('categories')->where('id',$id)->first();
+        foreach($post as $key =>$p){
+            $category_id = $post->category_id;
+        }
+        $post_related = Post::with('categories')->where('category_id',$category_id)->whereNotIn('id',[$id])->orderBy(DB::raw('RAND()'))->limit(5)->get();
+        
         $category = CategoryPost::all();
-        return view('pages.details')->with(compact('category','post'));
+        return view('pages.details')->with(compact('category','post','post_related'));
     }
 
     /**

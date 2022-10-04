@@ -6,7 +6,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="keywords" content="Coffee Break Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
         Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-        <title>Blogs api</title>
+        <title>Subaru</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -35,7 +35,7 @@
 	<div class="header-top">
 		<div class="container">
 			<div class="head-main">
-				<a href="index.html"><img src="{{asset('images/logo-1.png')}}" alt="" /></a>
+				<a href="{{url('/')}}"><img src="{{asset('uploads/logo.png')}}" alt="" /></a>
 			</div>
 		</div>
 	</div>

@@ -30,6 +30,7 @@
                             <tr>
                             <th scope="col">#</th>
                             <th scope="col">Tiêu đề</th>
+                            <th scope="col">Mô tả</th>
                             <th scope="col">Quản lý</th>
                             </tr>
                         </thead>
@@ -44,6 +45,7 @@
                             <tr>
                             <th scope="row">{{$i}}</th>
                             <td>{{$categories->title}}</td>
+                            <td>{{$categories->short_desc2}}</td>
                             <td>
                                 <form action="{{url('api/v1/category/delete',['Id'=>$categories->id])}}" method="POST">
                                     @method('DELETE')

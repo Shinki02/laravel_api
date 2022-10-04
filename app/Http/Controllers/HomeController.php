@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\CategoryPost;
 use App\post;
 use Illuminate\Http\Request;
-
+use DB;
 class HomeController extends Controller
 {
     /**
@@ -16,7 +16,7 @@ class HomeController extends Controller
     {
         $all_post = Post::all();
         $viewest_post = Post::orderBy('views','DESC')->limit(5)->get();
-        $newest_post = Post::all()->random(5);
+        $newest_post = Post::orderBy(DB::raw('RAND()'))->limit(5)->get();
         $category = CategoryPost::all();
         return view('pages.main',compact('category','all_post','newest_post','viewest_post')); 
     }

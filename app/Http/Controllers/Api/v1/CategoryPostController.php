@@ -39,6 +39,7 @@ class CategoryPostController extends Controller
     {
         $category = new CategoryPost();
         $category->title = $request->title;
+        $category->short_desc2 = $request->short_desc2;
         $category->save();
         return redirect()->route('category.index')->with('success','Category Inserted Successfuly');
     }
@@ -78,6 +79,7 @@ class CategoryPostController extends Controller
         $data = $request->all();
         $category = CategoryPost::find($categoryPost);
         $category->title = $data['title'];
+        $category->short_desc2 = $request->short_desc2;
         $category->save();
         // Session::put('success','Category Updated Successfuly');
         // Session::save();

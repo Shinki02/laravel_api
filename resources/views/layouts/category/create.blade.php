@@ -19,7 +19,9 @@
                         @csrf
                         <div class="form-group">
                             <label for="title">Tiêu đề</label> 
-                            <input type="text" placeholder="Tiêu đề..." class="form-control" name="title">   
+                            <input type="text" placeholder="Tiêu đề..." class="form-control" name="title">
+                            <label for="title">Mô tả danh mục</label> 
+                            <textarea  placeholder="Mô tả danh mục..." class="form-control" name="short_desc2" row="5" style="resize: none"></textarea> 
                             <input type="submit" name="themdanhmuc" class="btn btn -primary mt-2" value="Thêm">               
                         </div>
                     </form>

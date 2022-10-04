@@ -50,7 +50,10 @@ class Danhmuccontroller extends Controller
     {
         $category_post = Post::with('categories')->where('category_id',$id)->get();
         $category = CategoryPost::all();
-        return view('pages.category')->with(compact('category','category_post'));
+        $title_category = CategoryPost::find($id);
+        $viewest_post = Post::with('categories')->orderBy('views','DESC')->where('category_id',$id)->limit(5)->get();
+        $category_recomment = CategoryPost::whereNotIn('id',[$id])->get();
+        return view('pages.category')->with(compact('category','category_post','title_category','viewest_post','category_recomment'));
     }
 
     /**
